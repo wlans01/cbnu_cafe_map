@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_template/common/const/style.dart';
 import 'package:flutter_template/common/layout/default_layout.dart';
+import 'package:flutter_template/home/components/product_list.dart';
 
+import '../../common/const/style.dart';
 import '../components/header.dart';
 import '../components/search_button.dart';
 
@@ -16,6 +17,7 @@ class HomeScreen extends StatelessWidget {
       body: SafeArea(
         child: DefaultTabController(
           length: _itemCount,
+          animationDuration: const Duration(milliseconds: 700),
           child: NestedScrollView(
             headerSliverBuilder: (context, innerBoxIsScrolled) {
               return [
@@ -24,7 +26,7 @@ class HomeScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(
-                        height: DEFAULT_HIGHT_PADDING,
+                        height: DEFAULT_PADDING,
                       ),
                       const Header(),
                       const Padding(
@@ -33,7 +35,8 @@ class HomeScreen extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: DEFAULT_PADDING),
+                          horizontal: DEFAULT_PADDING,
+                        ),
                         child: TabBar(
                           isScrollable: true,
                           indicatorColor: Colors.transparent,
@@ -56,8 +59,14 @@ class HomeScreen extends StatelessWidget {
             body: TabBarView(
               children: List.generate(
                 _itemCount,
-                    (index) => Container(color: Colors.red,),
-              )
+                (index) {
+                  return ListView(
+                    children: [
+                      ProductList(),
+                    ],
+                  );
+                },
+              ),
             ),
           ),
         ),

@@ -7,10 +7,10 @@ class GAThemeData {
       fontFamily: 'Pretendard',
       textTheme: gaTextTheme(),
       colorScheme: ColorScheme.fromSeed(
-        seedColor: Color(0xff4D6FFF),
+        seedColor: const Color(0xff4D6FFF),
       ).copyWith(
-        primary: Color(0xff4D6FFF),
-        background: Color(0xffF3F3F3),
+        primary: const Color(0xff4D6FFF),
+        background: const Color(0xffF3F3F3),
       ),
     );
   }
@@ -21,7 +21,7 @@ class GAThemeData {
 }
 
 TextTheme gaTextTheme() {
-  return TextTheme(
+  return const TextTheme(
     displaySmall: TextStyle(
       fontWeight: FontWeight.w700,
       fontSize: 36,
@@ -49,6 +49,10 @@ TextTheme gaTextTheme() {
     bodySmall: TextStyle(
       fontWeight: FontWeight.w400,
       fontSize: 15,
+    ),
+    labelSmall: TextStyle(
+      fontWeight: FontWeight.w400,
+      fontSize: 12,
     ),
   );
 }

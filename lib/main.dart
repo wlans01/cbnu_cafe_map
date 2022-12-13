@@ -17,21 +17,22 @@ void main() async {
 class MyApp extends ConsumerWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  GoRouter get _router => GoRouter(routes: [
-        GoRoute(
-          path: '/',
-          name: RootTabScreen.routeName,
-          builder: (context, state) => const RootTabScreen(),
-          routes: [
-            GoRoute(
+  GoRouter get _router => GoRouter(
+        routes: [
+          GoRoute(
+            path: '/',
+            name: RootTabScreen.routeName,
+            builder: (context, state) => const RootTabScreen(),
+            routes: [
+              GoRoute(
                 path: 'product_detail',
                 name: ProductDetailScreen.routeName,
                 builder: (context, state) => const ProductDetailScreen(),
-            ),
-          ]
-        ),
-      ]);
-
+              ),
+            ],
+          ),
+        ],
+      );
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

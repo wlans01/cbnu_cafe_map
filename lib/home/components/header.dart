@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_template/common/const/jjokko.dart';
 
 import '../../common/const/style.dart';
 import '../../common/utils/get_size.dart';
@@ -15,11 +16,11 @@ class Header extends StatefulWidget {
 }
 
 class _HeaderState extends State<Header> {
-  final _itemLength = 5;
+  final _itemLength = jjokkoList.length;
   int currentPage = 500;
   int currentPageIndex = 1;
   final PageController _pageController =
-  PageController(initialPage: 500, viewportFraction: 0.8);
+      PageController(initialPage: 500, viewportFraction: 0.8);
 
   @override
   void initState() {
@@ -47,6 +48,7 @@ class _HeaderState extends State<Header> {
           PageView.builder(
             onPageChanged: (index) {
               setState(() {
+                currentPage = index;
                 currentPageIndex = index % _itemLength + 1;
               });
             },
@@ -54,14 +56,18 @@ class _HeaderState extends State<Header> {
             itemBuilder: (context, index) {
               return Container(
                 margin:
-                const EdgeInsets.symmetric(horizontal: DEFAULT_PADDING / 2),
+                    const EdgeInsets.symmetric(horizontal: DEFAULT_PADDING / 2),
                 height: 250,
                 decoration: BoxDecoration(
                   color: Colors.blue[100],
                   borderRadius: BorderRadius.circular(DEFAULT_RADIUS),
                 ),
-                child: Center(
-                  child: Text('image${index % _itemLength + 1}'),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(DEFAULT_RADIUS),
+                  child: Image.asset(
+                    jjokkoList[index % _itemLength],
+                    fit: BoxFit.cover,
+                  ),
                 ),
               );
             },
