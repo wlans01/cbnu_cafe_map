@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import '../../ga_map/screen/googlemap_screen.dart';
 import '../../home/screen/home_screen.dart';
+import '../../user/screen/my_screen.dart';
 import '../layout/default_layout.dart';
 
 class RootTabScreen extends StatefulWidget {
@@ -17,12 +19,11 @@ class _RootTabScreenState extends State<RootTabScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   DateTime? backButtOnPressedTime;
-  int index = 1;
+  int index = 0;
 
   @override
   void initState() {
     super.initState();
-
     _tabController = TabController(length: 3, vsync: this);
     _tabController.addListener(tabListener);
   }
@@ -44,7 +45,8 @@ class _RootTabScreenState extends State<RootTabScreen>
 
     //Statement 1 Or statement2
     bool backButton = backButtOnPressedTime == null ||
-        currentTime.difference(backButtOnPressedTime!) > const Duration(seconds: 3);
+        currentTime.difference(backButtOnPressedTime!) >
+            const Duration(seconds: 3);
 
     if (backButton) {
       backButtOnPressedTime = currentTime;
@@ -68,17 +70,15 @@ class _RootTabScreenState extends State<RootTabScreen>
       },
       child: DefaultLayout(
         padding: 0,
-        body:  [
-          Container(),
-            const HomeScreen(),
-            //Container(),
-            Container(),
-          ][index],
-
+        body: [
+          const GoogleMapScreen(),
+          const HomeScreen(),
+          const MyScreen(),
+        ][index],
         bottomNavigationBar: BottomNavigationBar(
-          selectedFontSize: 15,
-          unselectedFontSize: 15,
-          iconSize: 30,
+          selectedFontSize: 14,
+          unselectedFontSize: 14,
+          iconSize: 28,
           type: BottomNavigationBarType.fixed,
           onTap: (int index) {
             _tabController.animateTo(index);
@@ -86,17 +86,13 @@ class _RootTabScreenState extends State<RootTabScreen>
           currentIndex: index,
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home_filled),
-              label: '홈',
-            ),
-            BottomNavigationBarItem(
               icon: Icon(Icons.location_on),
               label: '지도',
             ),
-            // BottomNavigationBarItem(
-            //   icon: Icon(Icons.timeline_rounded),
-            //   label: '랭킹',
-            // ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home_filled),
+              label: '홈',
+            ),
             BottomNavigationBarItem(
               icon: Icon(Icons.supervised_user_circle),
               label: '내 정보',

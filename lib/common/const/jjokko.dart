@@ -7,6 +7,10 @@ const jjokkoList = [
   'assets/images/jjokko4.jpg',
   'assets/images/jjokko5.jpg',
   'assets/images/jjokko6.jpg',
+  'assets/images/jjokko7.jpg',
+  'assets/images/jjokko8.jpg',
+  'assets/images/jjokko9.jpg',
+  'assets/images/jjokko10.jpg',
 ];
 
 
