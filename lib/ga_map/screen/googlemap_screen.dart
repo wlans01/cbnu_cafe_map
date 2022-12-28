@@ -75,11 +75,11 @@ class _GoogleMapScreenState extends ConsumerState<GoogleMapScreen> {
                       ),
                       child: Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.search_rounded,
                             color: Colors.grey,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           Text(
@@ -94,7 +94,7 @@ class _GoogleMapScreenState extends ConsumerState<GoogleMapScreen> {
                     ),
                   ),
                   Row(
-                    children: [
+                    children: const [
                       CustomChip(),
                       SizedBox(
                         width: 10,
@@ -116,7 +116,7 @@ class _GoogleMapScreenState extends ConsumerState<GoogleMapScreen> {
               builder: (context, scrollController) {
                 return Container(
                   height: getScreenHeight(context) * 0.7,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(
@@ -130,7 +130,7 @@ class _GoogleMapScreenState extends ConsumerState<GoogleMapScreen> {
                   child: SingleChildScrollView(
                     controller: scrollController,
                     child: Column(
-                      children: [],
+                      children: const [],
                     ),
                   ),
                 );
